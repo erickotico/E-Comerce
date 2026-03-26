@@ -310,7 +310,7 @@ checkoutBtn.addEventListener("click", () => {
   message += `Endereço: ${address}\n`;
   message += `Complemento: ${complement || 'Não informado'}`;
 
-  const phone = "5511951320212"; // Substitua pelo numero a ser utilizado para os pedidos.
+  const phone = "5511945922993"; // Substitua pelo numero a ser utilizado para os pedidos.
   const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
   window.open(url, "_blank");
 });
