@@ -1,0 +1,526 @@
+/* Variáveis para cores e consistência */
+:root {
+  --primary-color: #424242; /* Cor primária para botões e destaques */
+  --secondary-color: #28a745; /* Cor secundária para ações positivas */
+  --background-color: #f8f9fa; /* Cor de fundo da página */
+  --text-color: #333; /* Cor do texto principal */
+  --border-color: #dee2e6; /* Cor das bordas */
+  --shadow: 0 2px 4px rgba(0,0,0,0.1); /* Sombra padrão para elementos */
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Fonte principal com fallback */
+  margin: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, var(--primary-color), #0c0c0c); /* Gradiente no cabeçalho */
+  color: white;
+  box-shadow: var(--shadow);
+  gap: 10px;
+  flex-wrap: wrap;
+}
+/* Container da busca */
+.search-container {
+  flex: 1;
+  max-width: 400px; 
+}
+
+/* Campo de busca */
+.search-container input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em; 
+}
+/* Container principal */
+.app-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto; 
+}
+
+.sidebar {
+  width: 220px;
+  position: fixed;
+  top: 140px;
+  left: 20px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 15px;
+  height: fit-content;
+  z-index: 100;
+}
+
+/* Ajuste para sidebar fixa */
+.app-container {
+  margin-left: 300px;
+  padding-top: 20px; 
+}
+
+ /* Container dos produtos */
+#products {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+/* Título da sidebar */
+.sidebar h3 {
+  margin-top: 0; 
+}
+
+/* Lista de categorias */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; 
+}
+
+ /* Item da lista */
+.sidebar li {
+  margin: 8px 0;
+}
+
+/* Botão de categoria */
+.sidebar button {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--text-color); 
+}
+
+ /* Destaque para categoria ativa */
+.sidebar button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Grid de produtos */
+.product-grid {
+  flex: 1; 
+}
+/* cards dos produtos */
+#products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  justify-content: center;
+  gap: 20px; 
+  padding: 0;
+  grid-auto-rows: minmax(320px, auto);
+
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+  width: 100%; 
+  max-width: 250px; 
+  box-sizing: border-box;
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px; 
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+}
+
+.card p {
+  margin: 0 0 15px 0;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+/* Informação de estoque nos cards */
+.stock-info {
+  margin: 8px 0;
+  font-size: 0.85em;
+  color: var(--secondary-color);
+}
+
+.stock-info.unavailable {
+  color: #dc3545;
+  font-weight: bold;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.2s; 
+
+}
+
+button:hover {
+  opacity: 0.9; 
+}
+
+.add-btn {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.remove-btn {
+  background-color: #dc3545; 
+  color: white;
+  margin-left: 10px;
+}
+
+/* Carrinho */
+.cart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 400px;
+  max-height: 80%;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.cart.open {
+  opacity: 1; 
+  visibility: visible;
+}
+
+.cart h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color); 
+}
+
+.cart-item:last-child {
+  border-bottom: none; 
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center; 
+}
+
+.quantity-controls button {
+  padding: 5px 10px;
+  background-color: var(--secondary-color);
+  color: white; 
+}
+
+/* Campo de quantidade */
+.quantity-controls input {
+  width: 50px;
+  text-align: center;
+  margin: 0 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px; 
+}
+
+/* Total do carrinho */
+#total {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: var(--secondary-color);
+  margin: 20px 0; 
+}
+
+/* Botão de checkout */
+#checkout {
+  width: 100%;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 15px;
+  font-size: 1.1em; 
+}
+
+/* Desabilita botão quando carrinho vazio */
+#checkout:disabled {
+  background-color: #ccc; 
+  cursor: not-allowed;
+}
+
+/* Campos de checkout no carrinho */
+.checkout-info {
+  margin-bottom: 15px;
+  display: grid;
+  gap: 8px;
+  text-align: left;
+}
+
+.checkout-info label {
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+.checkout-info input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+/* Overlay para carrinho */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  z-index: 999;
+}
+
+.overlay.show {
+  display: block; 
+}
+
+/* Toast para feedback */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--secondary-color);
+  color: white;
+  padding: 12px 16px;
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1100;
+  pointer-events: none; 
+}
+
+.toast.show {
+  opacity: 1; 
+  transform: translateY(0);
+}
+
+/* Modal de produto */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-content {
+  background-color: white;
+  margin: 10px auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Botão de fechar modal */
+.close {
+  color: #aaa; 
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: black;
+}
+
+#modal-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 15px; 
+}
+
+/* Estoque do modal */
+.modal-stock {
+  margin: 10px 0;
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-size: 0.95em;
+}
+
+/* Ficha técnica do produto */
+.specifications {
+  margin: 20px 0;
+  background: #f9f9f9;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+  text-align: left;
+}
+
+.specifications h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.1em;
+  color: var(--primary-color);
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.specs-table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.specs-table tr:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.spec-value {
+  color: var(--text-color);
+  text-align: right;
+}
+ /* Container para botões de variantes */
+.sizes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+ /* Botões para seleção de variantes */
+.size-btn {
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  background: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+.size-btn:hover:not(.disabled) {
+  background: var(--primary-color); 
+  color: white;
+}
+
+/* Estilo para variantes indisponíveis */
+.size-btn.disabled {
+  background: #f0f0f0;
+  color: #ccc;
+  cursor: not-allowed;
+  position: relative; 
+}
+
+.size-btn.disabled::after {
+  content: "✖";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  color: red; 
+}
+
+/* Destaque para variante selecionada */
+.size-btn.selected {
+  background: var(--secondary-color); 
+  color: white;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .app-container {
+    margin-left: 0;
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: static;
+    margin: 0 0 15px;
+    width: 100%;
+  }
+
+
+   /* Mantém largura fixa em mobile */
+  #products {
+    grid-template-columns: repeat(auto-fill, 250px);
+    justify-content: center;
+  }
+
+  button {
+    padding: 12px;
+    min-height: 44px;
+  }
+
+  .cart {
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    border-left: none;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
+  }
+}

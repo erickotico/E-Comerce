@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>E-Commerce</h1>
+  <div class="search-container">
+    <input id="search" type="text" placeholder="Buscar produto..." aria-label="Buscar produto">
+  </div>
+  <button id="cart-btn">🛒 (<span id="cart-count">0</span>)</button>
+</header>
+
+<div class="app-container">
+  <aside id="sidebar" class="sidebar">
+    <h3>Categorias</h3>
+    <ul id="category-list">
+      <!-- categorias dinamicas -->
+    </ul>
+  </aside>
+  <main id="products" class="product-grid"></main>
+</div>
+
+<!-- Overlay para carrinho -->
+<div id="overlay" class="overlay"></div>
+
+<!-- Carrinho -->
+<div id="cart" class="cart">
+  <h2>Carrinho</h2>
+  <ul id="cart-items"></ul>
+
+  <div class="checkout-info">
+    <label for="input-cep">CEP (obrigatório):</label>
+    <input id="input-cep" type="text" placeholder="00000-000" required>
+
+    <label for="input-address">Endereço e número (obrigatório):</label>
+    <input id="input-address" type="text" placeholder="Rua Exemplo, 123" required>
+
+    <label for="input-complement">Complemento (opcional):</label>
+    <input id="input-complement" type="text" placeholder="Apto 45, Bloco B">
+  </div>
+
+  <p id="total">Total: R$ 0</p>
+  <button id="checkout" disabled>Finalizar no WhatsApp</button>
+</div>
+
+<!-- Toast para feedback -->
+<div id="toast" class="toast">Produto adicionado ao carrinho!</div>
+
+<!-- Modal de produto -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <img id="modal-image" src="" alt="Produto">
+    <h2 id="modal-name"></h2>
+    <p id="modal-price"></p>
+    <p id="modal-description">Descrição do produto aqui.</p>
+    <div id="size-selection">
+      <h3>Selecione o tamanho:</h3>
+      <div class="sizes">
+        <button class="size-btn" data-size="PP">PP</button>
+        <button class="size-btn" data-size="P">P</button>
+        <button class="size-btn" data-size="M">M</button>
+        <button class="size-btn" data-size="G">G</button>
+        <button class="size-btn" data-size="GG">GG</button>
+      </div>
+    </div>
+    <button id="add-to-cart-modal" class="add-btn">Adicionar ao Carrinho</button>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
